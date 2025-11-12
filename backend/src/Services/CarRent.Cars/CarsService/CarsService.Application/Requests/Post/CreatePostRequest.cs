@@ -3,6 +3,6 @@
     public record CreatePostRequest(
         Guid CarId,
         string Description,
-        int? DiscountPercentage,
+        int DiscountPercentage,
         float PricePerDay);
 }

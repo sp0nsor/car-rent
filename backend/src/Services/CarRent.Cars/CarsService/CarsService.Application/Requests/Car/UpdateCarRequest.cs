@@ -8,8 +8,8 @@ namespace CarsService.Application.Requests.Car
         string Model,
         CarType CarType,
         SteeringType SteeringType,
-        int Capacity,
-        int Gasoline,
+        int SeatsCount,
+        int DrivingRange,
         int ReleaseYear,
         ICollection<IFormFile>? Images);
 }

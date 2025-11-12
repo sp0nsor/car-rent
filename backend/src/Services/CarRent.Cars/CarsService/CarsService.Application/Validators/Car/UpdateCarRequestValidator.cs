@@ -16,18 +16,16 @@ namespace CarsService.Application.Validators.Car
                 .MaximumLength(50).WithMessage("Model can`t exeed 50 characters.");
 
             RuleFor(c => c.CarType)
-                .NotEmpty().WithMessage("Car type is a required field.")
                 .IsInEnum().WithMessage("Invalid car type.");
 
             RuleFor(c => c.SteeringType)
-                .NotEmpty().WithMessage("Steering type is a required field.")
                 .IsInEnum().WithMessage("Invalid steering type.");
 
-            RuleFor(c => c.Capacity)
+            RuleFor(c => c.SeatsCount)
                 .NotEmpty().WithMessage("Seats count is a required field.")
                 .InclusiveBetween(1, 20).WithMessage("Seats count can`t be negative or exeed 20.");
 
-            RuleFor(c => c.Gasoline)
+            RuleFor(c => c.DrivingRange)
                 .NotEmpty().WithMessage("Driving range is a required field.")
                 .InclusiveBetween(1, 2000).WithMessage("Driving range can`t be negative or exeed 2000 km.");
 

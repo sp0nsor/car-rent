@@ -20,8 +20,8 @@ namespace CarsService.Infrastructure.Migrations
                     Brand = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     CarType = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Steering = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Capacity = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
-                    Gasoline = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
+                    SeatsCount = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
+                    DrivingRange = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
                     ReleaseYear = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
                     ImageUrls = table.Column<string>(type: "character varying(1300)", maxLength: 1300, nullable: false)
                 },
@@ -54,39 +54,6 @@ namespace CarsService.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Feedbacks",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    PostInfoId = table.Column<Guid>(type: "uuid", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    FeedbackText = table.Column<string>(type: "character varying(2000)", maxLength: 2000, nullable: false),
-                    Firstname = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Lastname = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    JobTitle = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    CompanyName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    ProfileFotoUrl = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    RatingScore = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Feedbacks", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Feedbacks_Posts_PostInfoId",
-                        column: x => x.PostInfoId,
-                        principalTable: "Posts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Feedbacks_PostInfoId",
-                table: "Feedbacks",
-                column: "PostInfoId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_CarId",
                 table: "Posts",
@@ -97,9 +64,6 @@ namespace CarsService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Feedbacks");
-
             migrationBuilder.DropTable(
                 name: "Posts");
 

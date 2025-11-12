@@ -6,8 +6,8 @@
         string Brand,
         string CarType,
         string Steering,
-        int Capacity,
-        int Gasoline,
+        int SeatsCount,
+        int DrivingRange,
         int ReleaseYear,
         ICollection<string> Images);
 }

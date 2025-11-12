@@ -31,11 +31,11 @@ namespace CarsService.Infrastructure.Configurations
                 .HasConversion<string>()
                 .HasMaxLength(50);
 
-            builder.Property(c => c.Capacity)
+            builder.Property(c => c.SeatsCount)
                 .IsRequired()
                 .HasDefaultValue(0);
 
-            builder.Property(c => c.Gasoline)
+            builder.Property(c => c.DrivingRange)
                 .IsRequired()
                 .HasDefaultValue(0);
 

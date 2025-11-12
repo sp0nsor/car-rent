@@ -9,8 +9,8 @@ namespace CarsService.Infrastructure.Entities
         public string Brand { get; set; } = string.Empty;
         public CarType CarType { get; set; }
         public SteeringType Steering { get; set; }
-        public int Capacity { get; set; }
-        public int Gasoline { get; set; }
+        public int SeatsCount { get; set; }
+        public int DrivingRange { get; set; }
         public int ReleaseYear { get; set; }
         public ICollection<string> ImageUrls { get; set; } = [];
     }

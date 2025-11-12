@@ -15,8 +15,8 @@ namespace CarsService.Application.MappingProfiles.Car
                     src.Brand,
                     src.CarType.ToString(),
                     src.Steering.ToString(),
-                    src.Capacity,
-                    src.Gasoline,
+                    src.SeatsCount,
+                    src.DrivingRange,
                     src.ReleaseYear,
                     src.ImageUrls
                 ));

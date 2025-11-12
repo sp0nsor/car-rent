@@ -33,17 +33,12 @@ namespace CarsService.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<int>("Capacity")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0);
-
                     b.Property<string>("CarType")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<int>("Gasoline")
+                    b.Property<int>("DrivingRange")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasDefaultValue(0);
@@ -63,6 +58,11 @@ namespace CarsService.Infrastructure.Migrations
                         .HasColumnType("integer")
                         .HasDefaultValue(0);
 
+                    b.Property<int>("SeatsCount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0);
+
                     b.Property<string>("Steering")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -71,66 +71,6 @@ namespace CarsService.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cars", (string)null);
-                });
-
-            modelBuilder.Entity("CarsService.Infrastructure.Entities.FeedbackEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("FeedbackText")
-                        .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("character varying(2000)");
-
-                    b.Property<string>("Firstname")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<string>("JobTitle")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<string>("Lastname")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<Guid>("PostInfoId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("ProfileFotoUrl")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
-
-                    b.Property<int>("RatingScore")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0);
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostInfoId");
-
-                    b.ToTable("Feedbacks", (string)null);
                 });
 
             modelBuilder.Entity("CarsService.Infrastructure.Entities.PostEntity", b =>
@@ -178,17 +118,6 @@ namespace CarsService.Infrastructure.Migrations
                     b.ToTable("Posts", (string)null);
                 });
 
-            modelBuilder.Entity("CarsService.Infrastructure.Entities.FeedbackEntity", b =>
-                {
-                    b.HasOne("CarsService.Infrastructure.Entities.PostEntity", "PostInfo")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("PostInfoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PostInfo");
-                });
-
             modelBuilder.Entity("CarsService.Infrastructure.Entities.PostEntity", b =>
                 {
                     b.HasOne("CarsService.Infrastructure.Entities.CarEntity", "Car")
@@ -198,11 +127,6 @@ namespace CarsService.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Car");
-                });
-
-            modelBuilder.Entity("CarsService.Infrastructure.Entities.PostEntity", b =>
-                {
-                    b.Navigation("Feedbacks");
                 });
 #pragma warning restore 612, 618
         }
