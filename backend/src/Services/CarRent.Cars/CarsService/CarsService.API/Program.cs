@@ -18,6 +18,8 @@ services.AddMappings();
 services.AddApiServices();
 services.AddApplicationServices();
 
+services.AddValidators();
+
 var app = builder.Build();
 
 app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
