@@ -38,6 +38,11 @@ namespace CarsService.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
                     b.Property<int>("DrivingRange")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
@@ -53,6 +58,11 @@ namespace CarsService.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
+                    b.Property<int>("Power")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0);
+
                     b.Property<int>("ReleaseYear")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
@@ -63,7 +73,7 @@ namespace CarsService.Infrastructure.Migrations
                         .HasColumnType("integer")
                         .HasDefaultValue(0);
 
-                    b.Property<string>("Steering")
+                    b.Property<string>("TransmissionType")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");

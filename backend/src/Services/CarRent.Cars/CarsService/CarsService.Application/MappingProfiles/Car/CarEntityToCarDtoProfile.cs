@@ -13,11 +13,13 @@ namespace CarsService.Application.MappingProfiles.Car
                     src.Id,
                     src.Model,
                     src.Brand,
+                    src.Color,
                     src.CarType.ToString(),
-                    src.Steering.ToString(),
+                    src.TransmissionType.ToString(),
                     src.SeatsCount,
                     src.DrivingRange,
                     src.ReleaseYear,
+                    src.Power,
                     src.ImageUrls
                 ));
         }

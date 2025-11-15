@@ -18,7 +18,7 @@ namespace CarsService.Application.Validators.Car
             RuleFor(c => c.CarType)
                 .IsInEnum().WithMessage("Invalid car type.");
 
-            RuleFor(c => c.SteeringType)
+            RuleFor(c => c.TransmissionType)
                 .IsInEnum().WithMessage("Invalid steering type.");
 
             RuleFor(c => c.SeatsCount)

@@ -26,9 +26,13 @@ namespace CarsService.Infrastructure.Configurations
                 .HasConversion<string>()
                 .HasMaxLength(50);
 
-            builder.Property(c => c.Steering)
+            builder.Property(c => c.TransmissionType)
                 .IsRequired()
                 .HasConversion<string>()
+                .HasMaxLength(50);
+
+            builder.Property(c => c.Color)
+                .IsRequired()
                 .HasMaxLength(50);
 
             builder.Property(c => c.SeatsCount)
@@ -40,6 +44,10 @@ namespace CarsService.Infrastructure.Configurations
                 .HasDefaultValue(0);
 
             builder.Property(c => c.ReleaseYear)
+                .IsRequired()
+                .HasDefaultValue(0);
+
+            builder.Property(c => c.Power)
                 .IsRequired()
                 .HasDefaultValue(0);
 

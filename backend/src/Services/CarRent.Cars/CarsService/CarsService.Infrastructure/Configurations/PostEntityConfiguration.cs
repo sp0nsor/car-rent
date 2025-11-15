@@ -13,6 +13,12 @@ namespace CarsService.Infrastructure.Configurations
 
             builder.HasKey(p => p.Id);
 
+            builder.HasOne(p => p.Car)
+                .WithOne()
+                .HasForeignKey<PostEntity>(p => p.CarId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.Property(p => p.CarId)
                 .IsRequired();
 
@@ -48,9 +54,6 @@ namespace CarsService.Infrastructure.Configurations
                 .HasConversion(
                     v => v,
                     v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
-
-            builder.HasIndex(p => p.CarId)
-                .IsUnique();
         }
     }
 }

@@ -4,10 +4,12 @@
         Guid Id,
         string Model,
         string Brand,
+        string Color,
         string CarType,
-        string Steering,
+        string TransmissionType,
         int SeatsCount,
         int DrivingRange,
         int ReleaseYear,
+        int Power,
         ICollection<string> Images);
 }

@@ -18,11 +18,13 @@ namespace CarsService.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Model = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Brand = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Color = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     CarType = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Steering = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    TransmissionType = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     SeatsCount = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
                     DrivingRange = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
                     ReleaseYear = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
+                    Power = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
                     ImageUrls = table.Column<string>(type: "character varying(1300)", maxLength: 1300, nullable: false)
                 },
                 constraints: table =>
