@@ -15,6 +15,10 @@ namespace CarsService.Application.Validators.Car
                 .NotEmpty().WithMessage("Model is a required field.")
                 .MaximumLength(50).WithMessage("Model can`t exeed 50 characters.");
 
+            RuleFor(c => c.Color)
+                .NotEmpty().WithMessage("Color is a required field.")
+                .MaximumLength(50).WithMessage("Color can`t exxed 50 characters.");
+
             RuleFor(c => c.CarType)
                 .IsInEnum().WithMessage("Invalid car type.");
 
@@ -32,6 +36,10 @@ namespace CarsService.Application.Validators.Car
             RuleFor(c => c.ReleaseYear)
                 .NotEmpty().WithMessage("Release year is a required field.")
                 .InclusiveBetween(1885, DateTime.UtcNow.Year).WithMessage("Release year is invalid.");
+
+            RuleFor(c => c.Power)
+                .NotEmpty().WithMessage("Power is a required filed.")
+                .Must(p => p > 0).WithMessage("Power can`t be negative.");
 
             RuleFor(c => c.Images)
                 .NotEmpty().WithMessage("Images is a required field.")

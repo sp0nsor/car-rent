@@ -1,4 +1,5 @@
 ﻿using CarsService.API.Middlewares;
+using System.Text.Json.Serialization;
 
 namespace CarsService.API.Extensions
 {
@@ -9,7 +10,10 @@ namespace CarsService.API.Extensions
             services.AddTransient<GlobalExceptionHandlingMiddleware>();
 
             services.AddEndpointsApiExplorer();
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(o =>
+                    o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter())
+                );
 
             services.AddSwaggerGen();
         }
