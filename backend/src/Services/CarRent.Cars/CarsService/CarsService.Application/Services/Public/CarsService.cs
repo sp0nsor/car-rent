@@ -32,7 +32,7 @@ namespace CarsService.Application.Services.Public
             PaginationParams paginationParams,
             CancellationToken cancellationToken)
         {
-            var specification = new GetAllCarsSpecification();
+            var specification = new AllCarsSpecification();
             var (carEntities, totalPages) = await _carsRepository.GetAsync(
                 specification,
                 paginationParams.PageIndex,
@@ -50,7 +50,7 @@ namespace CarsService.Application.Services.Public
             Guid carId,
             CancellationToken cancellationToken)
         {
-            var specification = new GetCarByIdSpecification(carId);
+            var specification = new CarByIdSpecification(carId);
             var carEntity = await _carsRepository.GetSingleAsync(specification, cancellationToken);
             if (carEntity is null)
             {
@@ -80,7 +80,7 @@ namespace CarsService.Application.Services.Public
             UpdateCarRequest updateCarRequest,
             CancellationToken cancellationToken)
         {
-            var specification = new GetCarByIdSpecification(carId);
+            var specification = new CarByIdSpecification(carId);
             var carEntity = await _carsRepository.GetSingleAsync(
                 specification,
                 cancellationToken);
@@ -105,7 +105,7 @@ namespace CarsService.Application.Services.Public
             Guid carId,
             CancellationToken cancellationToken)
         {
-            var specification = new GetCarByIdSpecification(carId);
+            var specification = new CarByIdSpecification(carId);
             var carEntity = await _carsRepository.GetSingleAsync(
                 specification,
                 cancellationToken);

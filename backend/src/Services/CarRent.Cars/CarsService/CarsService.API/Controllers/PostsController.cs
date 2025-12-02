@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CarsService.API.Controllers
 {
     [ApiController]
-    [Route("posts")]
+    [Route("/api")]
     public class PostsController : Controller
     {
         private readonly IPostsService _postsService;
@@ -16,19 +16,21 @@ namespace CarsService.API.Controllers
             _postsService = postsService;
         }
 
-        [HttpGet]
+        [HttpGet("posts")]
         public async Task<IActionResult> GetPaginatedPostsAsync(
             [FromQuery] PaginationParams paginationParams,
+            [FromQuery] PostFilter postFilter,
             CancellationToken cancellationToken)
         {
             var result = await _postsService.GetPaginatedPostsAsync(
+                postFilter,
                 paginationParams,
                 cancellationToken);
 
             return Ok(result);
         }
 
-        [HttpGet("{postId:guid}")]
+        [HttpGet("posts/{postId:guid}")]
         public async Task<IActionResult> GetPostByIdAsync(
             [FromRoute] Guid postId,
             CancellationToken cancellationToken)
@@ -40,7 +42,7 @@ namespace CarsService.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPost("posts")]
         public async Task<IActionResult> CreatePostAsync(
             [FromForm] CreatePostRequest createPostRequest,
             CancellationToken cancellationToken)
@@ -52,7 +54,7 @@ namespace CarsService.API.Controllers
             return Created();
         }
 
-        [HttpPut("{postId:guid}")]
+        [HttpPut("posts/{postId:guid}")]
         public async Task<IActionResult> UpdatePostAsync(
             [FromRoute] Guid postId,
             [FromForm] UpdatePostRequest updatePostRequest,
@@ -66,7 +68,7 @@ namespace CarsService.API.Controllers
             return Accepted();
         }
 
-        [HttpDelete("{postId:guid}")]
+        [HttpDelete("posts/{postId:guid}")]
         public async Task<IActionResult> DeleltePostAsync(
             [FromRoute] Guid postId,
             CancellationToken cancellationToken)

@@ -3,11 +3,11 @@ using System.Linq.Expressions;
 
 namespace CarsService.Infrastructure.Specifications.Post
 {
-    public class GetPostByIdSpecification : Specification<PostEntity>
+    public class PostByIdSpecification : Specification<PostEntity>
     {
         private readonly Guid _postId;
 
-        public GetPostByIdSpecification(Guid postId)
+        public PostByIdSpecification(Guid postId)
         {
             _postId = postId;
         }

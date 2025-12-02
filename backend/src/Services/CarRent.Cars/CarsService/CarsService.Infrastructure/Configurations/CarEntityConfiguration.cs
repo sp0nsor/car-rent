@@ -57,6 +57,8 @@ namespace CarsService.Infrastructure.Configurations
                     v => v.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList()
                 )
                 .HasMaxLength(1300);
+
+            builder.HasIndex(c => new { c.Brand, c.Model });
         }
     }
 }

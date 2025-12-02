@@ -29,11 +29,12 @@ namespace CarsService.Application.Services.Public
         }
 
         public async Task<PaginatedResultDto<PostDto>> GetPaginatedPostsAsync(
+            PostFilter postFilter,
             PaginationParams paginationParams,
             CancellationToken cancellationToken)
         {
             var (postsEntities, totalPages) = await _postsRepository.GetAsync(
-                new GetAllPostsSpecification(),
+                new PostByFilterSpecification(postFilter.CarBrand, postFilter.CarModel),
                 paginationParams.PageIndex,
                 paginationParams.PageSize,
                 cancellationToken);
@@ -49,7 +50,7 @@ namespace CarsService.Application.Services.Public
             Guid postId,
             CancellationToken cancellationToken)
         {
-            var specification = new GetPostDetailsByIdSpecification(postId);
+            var specification = new PostDetailsByIdSpecification(postId);
             var postEntity = await _postsRepository.GetSingleAsync(
                 specification,
                 cancellationToken);
@@ -67,7 +68,7 @@ namespace CarsService.Application.Services.Public
             CancellationToken cancellationToken)
         {
             var carEntity = _carsRepository.GetSingleAsync(
-                new GetCarByIdSpecification(createPostRequest.CarId),
+                new CarByIdSpecification(createPostRequest.CarId),
                 cancellationToken);
             if (carEntity is null)
             {
@@ -86,7 +87,7 @@ namespace CarsService.Application.Services.Public
             CancellationToken cancellationToken)
         {
             var postEntity = await _postsRepository.GetSingleAsync(
-                new GetPostByIdSpecification(postId),
+                new PostByIdSpecification(postId),
                 cancellationToken);
             if (postEntity is null)
             {
@@ -106,7 +107,7 @@ namespace CarsService.Application.Services.Public
             CancellationToken cancellationToken)
         {
             var postEntity = await _postsRepository.GetSingleAsync(
-                new GetPostByIdSpecification(postId),
+                new PostByIdSpecification(postId),
                 cancellationToken);
             if (postEntity is null)
             {

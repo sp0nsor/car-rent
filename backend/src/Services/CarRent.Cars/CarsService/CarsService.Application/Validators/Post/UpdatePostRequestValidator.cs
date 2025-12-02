@@ -12,7 +12,7 @@ namespace CarsService.Application.Validators.Post
                 .MaximumLength(2000);
 
             RuleFor(p => p.DiscountPercentage)
-                .InclusiveBetween(1, 100).WithMessage("DiscountPercentage can`t be negative or exxed 100.");
+                .InclusiveBetween(0, 100).WithMessage("DiscountPercentage can`t be negative or exxed 100.");
 
             RuleFor(p => p.PricePerDay)
                 .NotEmpty().WithMessage("Price is a required field.")

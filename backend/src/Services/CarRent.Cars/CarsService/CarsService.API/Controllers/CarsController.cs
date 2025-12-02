@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CarsService.API.Controllers
 {
     [ApiController]
-    [Route("cars")]
+    [Route("/api/cars")]
     public class CarsController : Controller
     {
         private readonly ICarsService _carsService;
